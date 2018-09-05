@@ -15,4 +15,6 @@
     <author email="ls.dean.ch@gmail.com">dean</author>
 
     <buildtool_depend>catkin</buildtool_depend>
+
+	<build_depend>ROServer</build_depend>
 </package>
