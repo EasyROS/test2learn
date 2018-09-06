@@ -18,3 +18,11 @@ option (BUILD_TEST_PROGRAM_STRATEGY "Enable the build of Strategy programs" OFF)
 
 #Build the main test binary
 add_executable (Test Test/main.cpp)
+
+set( share_src
+	Test/share.hpp
+	Test/share.cpp
+)
+
+#Build the sharelib
+add_library (test_share SHARED ${share_src})
