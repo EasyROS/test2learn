@@ -1,28 +1,17 @@
 cmake_minimum_required(VERSION 2.8)
-project(test)
+project(TL)
 
-find_package(catkin REQUIRED COMPONENTS
+find_package(catkin REQUIRED
         )
 
 catkin_package(
-        # INCLUDE_DIRS Motion/
-        # LIBRARIES #TODO: which libraries are published?
-        # CATKIN_DEPENDS tclap RhAL model robocup_referee rhoban_graphs rhoban_team_play rhoban_random rhoban_unsorted rhoban_model_learning
+        INCLUDE_DIRS Test
+        LIBRARIES TL
 )
+include_directories(Test ${catkin_INCLUDE_DIRS})
 
-#Build option
-option (BUILD_TEST_VISION "Build the Vision" ON)
-option (BUILD_VISION_OPENCL "Build vision with OpenCL support" OFF)
-option (BUILD_TEST_PROGRAM_VISION "Enable the build of Vision Programs" OFF)
-option (BUILD_TEST_PROGRAM_STRATEGY "Enable the build of Strategy programs" OFF)
-
-#Build the main test binary
-add_executable (Test Test/main.cpp)
-
-set( share_src
-	Test/share.hpp
+set( SOURCES
 	Test/share.cpp
 )
-
-#Build the sharelib
-add_library (test_share SHARED ${share_src})
+add_library (TL SHARED ${SOURCES})
+target_link_libraries(TL ${catkin_LIBRARIES})
